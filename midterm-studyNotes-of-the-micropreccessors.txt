@@ -1,0 +1,280 @@
+Micropreccessor Midterm Notes
+
+WEEK 1:
+
+Computer has two basic principal:
+- responding instrructions
+- execute prerecorded instrructions
+
+All computer has these:
+Memory, enables computer to store temporarily data.
+Mass storage device, store permanent large data.
+Input device, data instructions.
+Output device, display result.
+Central Proccess Unit, heart of the computer. Execute everything.
+
+What is microprecessor?
+One of the most importants, acts as a brain of the computer system.
+Controlling unit of CPU, very small, performs ALU operations,
+communicates with external devices.
+
+What is computer?
+Accepts data from user.
+Stores data and instructions in memory.
+Process data.
+Communicates the result.
+
+Computer Units:
+Input unit
+Output unit
+Memory unit
+Central processing unit(CPU)
+
+Central processing unit:
+Fetches the instructions and data from peripheral devices.
+Perform Arithmetic operations and logical decisions.
+Controls the operations in all units.
+
+	Various sub-blocks of CPU's:
+		
+		Arithmetic and Logical Unit (ALU):
+		addition, substraction... AND OR NOT XOR...
+		
+		Timing and Control Unit:
+		Controls entire operations being performed by system.
+
+		Register:
+		Vey small very fast memory, in CPU.
+		Stores current data and instructions while in execution.
+
+Memory Unit:
+Stores the program statement, data, information supplied from input unit, 
+final output.
+
+Microprecessor:
+Fetch the instructions stored in the main memory.
+Identify the operations and the devices involved. everything connected to him.
+Determines when to take action.
+
+Microprecessor yerince CPU kullanılırsa Microcomputer == Personal Computer(PC) olur.
+
+Microcontroller is designed for a very specific task to control a particular system.
+
+Microprocessor Characteristics:
+	Instructions Set
+	Bandwith: The number of bit processed in a single instruction.
+	Capability
+	Clock Speed: Determines how many operations per second the processor can perform.
+	Word Length: 8bit microprecessor can process 8bit data.
+	Width of Data Bus: Number of bits that can be transferred.
+	Width of Address Bus: Decides maximum size of the memory.
+	Input/Output Adressing Capability: The maximum number of I/O ports accessed by the
+	microprecessor.
+	Interrupt Capability: It used to handle unpredicted events. Interrupts the microprecessor.
+ 
+Features of Microprecessor:
+Low cost
+Small size
+Low Power consumption
+High Versatility
+Extreme Reliability
+
+Embedded system:
+is nearly any computing system other than a desktop, laptop, or mainframe computer.
+Single functioned, repeatedly.
+Low cost, low power, small, fast.
+Reactive and real-time.
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 2:
+
+Binary Number System:
+
+Digital systems have only two states. 0:OFF 1:ON
+1Byte = 8bits
+Binary to hexadecimal, group digits in fours then translate.
+The 0x is for base 16. (0xA2F)  
+The 0b is for base 2. (0b10101111)w
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 3: NOT INCLUDED
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 4:
+
+System Bus:
+It is a pathway composed of cables and connectors to carry data between microprecessor and memory.
+The network of wires or electronic pathyaws is called "Bus".
+A 32bit bus means 32 parallels wires or connectors. Can transmit simultaneously.
+Types of Bueses:
+
+	Data Bus:
+	Which Data transmitted. It is like a highway. Connects all components to CPU and main memory.	
+	The siz(width) of bus determines how much data can be transmitted at one time. 16=16,32=32 easy
+	
+	Address Bus:
+	Wires that identify particular location in main memory.
+	Size determines how many unique memory locations can be addressed. for 4bit adressed=2*4=16bytes of memory
+	
+	Control Bus:
+	Regulates the activity on the bus.Control bus carries signals that report the status of devices.
+	Control signals transmit timing and command information among system modules.
+
+	Typical Control Bus Signals:	
+	Memory Read, placed data from the addressed location to data bus.
+	Memory Write, writes the data on the bus to addressed location.
+	I/O Read, causes data from the addressed I/O port to placed on the bus. 
+	I/O Write, causes data on the bus to output, addressed I/O port.
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 4.1:
+
+Interrupt Controller:
+
+There are 5 interrupt signals:
+
+TRAP Vector NON-Maskable. Highest priority. Enabled until acknowleged.
+RST 7.5 Vector Maskable. 2nd Highest.
+RST 6.5 Vector Maskable. 3rd Highest.
+RST 5.5 Vector Maskable
+INTR NON-Vector Maskable. Lowest priority. Can be disabled by resetting microprecessor.
+
+TRAP is the only non-maskable interrupt in 8085.
+TRAP is also automaticly vectored.
+
+Vector interrupt, interrupt address is known.
+NON-Vector, needs to send address externally.
+
+Maskable interrupt, can be disabled by writing instructions.
+NON-Maskable interrupt, CAN NOT disabled by writing instructions.
+
+ISR: Interrupt Service Routine
+El: one byte instruction, Enables using maskable interruptions.
+DI: one byte instruction, Disables using maskable interruptions.
+
+Can the microprecessor be interrupted again before comletion of ISR? (Multiple Interrupt?)
+Only if we allow it to.
+If El instruction placed early in the ISR, ıther interrupts MAY occur before ISR id done.
+
+Branch Control Group
+Branch is a control flow structure that allows a program to execute different sequences 
+of instructions based on certain conditions.
+
+JMP,Jump: program counter is loaded with given address, doesn't return.
+CALL,Call: program counter saves the address and the next instruction's address. Return after execution.
+RET,Return: Used at the end of a subroutine to return to the main program.
+
+*Unconditional and conditional depends on corresponding flag condition.
+
+*Fetch: The processor retrieves an instruction from the program memory. 
+ This instruction is stored in a place called the Instruction Register.
+
+Instruction Cycle: Total time required to execute an instruction.
+
+Machine Cycle: There are, fetch, memory read/write, I/O read/write.
+*First machine cycle is always an opcode fetch cycle.
+8085 has minimum 1 (which is a fetch cyclye), maximum 5 machine cycles.
+
+T-state: Subdivision of operations in one system clock period.
+In 8085 requires 4T-states. Others, between 3-6.
+
+Timig Diagram: Graphical represantation of execution of instructions.
+
+*Microprocessor needs +5V power supply.
+
+
+8085:
+
+8-bit microprocessor.
+Has 40 pins.
+Can generate clock signals internally.
+
+Interrupt Pins:
+When microprocessor receives interrupt signal, it discontinues whatever it was executing.
+It starts executing new program indicated by the interrupt signal.
+Interrupt signals are generated by external peripheral devices.
+After execution of the new program, microprocessor goes back to the previous program.
+
+Adress Bus, 16-bit.
+Data Bus, 8-bit.
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 5:
+
+Addressing Modes of 8085:
+
+To perform operation we have to give corresponding instructions the processor.
+In each instruction thera are 3 things needs to specified:
+Operation to be performed.
+Adress source of data.
+Adress of the destination of result.
+
+Advantages of AddressinModes in 8085:
+Versatility.
+Efficient memory usage.
+Easy to use.
+Improved performance.
+
+There are 5 addressing modes:
+Direct Addressing
+Register Addressing
+Register Indirect Addressing
+Immediate Addressing
+Implicit Addressing
+
+-----------------------------------------------------------------------------------------------------
+
+WEEK 6:
+
+Instruction set of 8085:
+
+8085 has 246 instructions. Each is represented by 8-bit. 
+These 8-bit binary values is called Op-Code or Instruction Byte.
+
+There are 5 class of Instruction Set:
+
+	Data Transfer Instruction:
+	These instruction moves data between memory and register. Both ways. 
+	Copies data. Data not modifies.
+	
+	Arithmetic Instruction:
+	Addition, Substraction, --> 8-bit of numbers, 
+	contents of register added to contents of accumulator. Result stored in accumulator.
+	No two other 8-bit registers can be added/substracted directly.
+	(If the result of substraction is negative, it stored as 2's comlement form)
+	
+	Increment, Decrement --> Can be increment or decrement by 1 directly. On any register or memory.
+
+	Logical Instruction:
+	AND, OR, XOR, --> Any 8-bit data, or the contents of register, 
+	or memory location can logically have these. With the contents of accumulator. 
+	The result is stored in accumulator.
+
+	Rotate, --> Each bit in the accumulator can be shifted 
+	either left or right to the next position.
+
+
+	Compare, --> Any 8-bit data, or the contents of register, or memory location can be compared for:
+		Equality
+		Greater Than
+		Less Than
+    			with the contents of accumulator. The result is reflected in status flags.
+	
+	Complement --> The contents of accumulator can be complemented.
+			Each 0 is replaced by 1 and each 1 is replaced by 0.
+	
+	
+	Branching Instruction
+	Control Instruction
+
+to be continued...
+
+
+
+
+
