@@ -95,7 +95,7 @@ Digital systems have only two states. 0:OFF 1:ON
 1Byte = 8bits
 Binary to hexadecimal, group digits in fours then translate.
 The 0x is for base 16. (0xA2F)  
-The 0b is for base 2. (0b10101111)w
+The 0b is for base 2. (0b10101111)
 
 -----------------------------------------------------------------------------------------------------
 
