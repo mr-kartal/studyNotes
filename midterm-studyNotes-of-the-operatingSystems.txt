@@ -1,0 +1,259 @@
+OPERATING SYSTEMS
+
+--------------------------------------------------------------------------------------------------------
+
+Chapter 1:
+
+INTRODUCTION
+
+Computer system can be divided into four components:
+
+-Hardware
+
+-Operating system, resource allocator, control program.
+*The one program running at all times on the computer is "kernel".
+
+-Application programs
+-Users
+
+CPUs and device controllers connected by bus, provides access to shared memory.
+Concurrent execution of CPUs and devices competes for memory cycles.
+I/O devices and CPU can execute concurrently.
+Each device controller; 
+			is in charge of particular device type, 
+			has a local buffer.
+CPU moves data between main memory and local buffers.
+
+Functions of Interrupts:
+-Transfers control to the interrupt service routine, through the interrupt vector, 
+which contains the address of the service routines.
+
+-Interrupt architecture must save the address of the interrupted action.
+-A trap or exception is a software-generated interrupt caused either by error or user.
+-*Operating system is interrupt driven. Means, I/O first.
+
+There are two types of interrupts:
+-polling
+-vectored
+
+I/O Structure
+
+System Call, request to the OS allow user to "wait" for I/O comletion.
+Device-Status Table, contains entry for each I/O device "indicating" its type , address and state.
+
+Storage Structure
+Main memory, large, random access, volatile.
+Secondary storage(extension), nonvolatile.
+
+*Storage system organised in hierarchy.
+-Speed
+-Cost
+-Volatility
+
+Caching, copying the information into faster storage system; main memory can be viewed as a cache
+for secondary storage.
+
+Device Driver, for each device controller to manage I/O. Provides uniform interface between 
+controller and kernel.
+
+Caching:
+Important, performed at many levels of computer.
+Information in use copied from slower to faster storage temporarily.
+Faster storage(cache) checked first to determine if information is there.
+If it is, used there. If not, data copied to cache and used there.
+
+Advantages of Multiprocessors:
+Increased throughput.
+Economy of scale.
+Increased reliability.
+
+Two types:
+Asymmetric Multiprocessing – each processor is assigned a SPECIAL task.
+Symmetric Multiprocessing – each processor performs ALL tasks.
+
+Multiprogramming(Batch System): Single user cannot keep CPU and I/O devices busy always so,
+multiprogramming organizes jobs(code and data) so CPU always has one to execute.
+Subset of total jobs in kept in memory.
+One job selected and run via job scheduling.
+When it has to wait for I/O or else, system switches to do another job.
+
+Timesharing(Multitasking) is logical extension in CPU, which switches jobs so frequently so 
+users can interract with each job whil its running. Creating "Interactive" computing.
+
+*There are twho modes in OS. Kernel mode and User mode.
+
+Process Management:
+A process is a program in execution. It is a unit of work within the system. 
+Program is a passive entity, process is an active entity.
+Process needs 5 resources to complete a task:
+	CPU, memory, I/O, files, Initialization data
+
+
+Memory Management:
+To execute a program all of the instructions and data must be in memory.
+
+Storage Management:
+Abstract physical properties to logical storage unit a.k.a. file
+
+--------------------------------------------------------------------------------------------------------
+
+Chapter 2:
+
+OPERATING-SYSTEM STRUCTURE
+
+Provides environment for execution of programs and services to programs and users.
+
+Set of operatin system services:
+	User Interface --> Command Line(CLI), Graphics User Interface(GUI), Batch.
+	Program execution
+	I/O operations
+	File-system manipulation --> read, write, directorie,crete, delete, search.
+	Communications exchange information on the same computer or between computers over a network.
+	Error detection
+	Resource allocation --> CPU cycles, main memory, file storage, I/O devices.
+	Accounting --> Keeps the track of which users use how much and what kind resource.
+	Protection and security.
+
+CLI:command interpreter allows direct command entry. Sometimes in shells. Primarely, fetches 
+command from user and executes it.
+
+GUI: desktop, mouse, keyboard, icons.
+
+System Calls: programming interface to services provided by OS.
+*Programs mostly accessed via a high-level Application Programming Interface (API) 
+rather than direct system call use.
+
+Typically, a number associated with each system call.
+System-call interface maintains a table indexed according to these numbers.
+
+Types of System Calls:
+Process Control
+File Management
+Device Management
+Information maintenance, get-set time-date-data-process-file.
+Communications, creat-delete communication connection. Send-receive message. From client to server.
+Protection.
+
+System Programs:
+Provides a convenient enviorement for program development and execution. They are:
+File manipulation
+Status information, somettimes stored in a File modification.
+Programming language support.
+Program loading and execution.
+Communications.
+Backround services.
+Application programs.
+
+*User goals and System goals:
+*User goals – operating system should be convenient to use, easy to learn, reliable, safe, and fast
+*System goals – operating system should be easy to design, implement, and maintain, as well as flexible, 
+reliable, error-free, and efficient
+
+--------------------------------------------------------------------------------------------------------
+
+Chapter 3:
+
+PROCESS
+
+Process:a program in execution.
+
+Program is passive entity, process is active.
+Process states:
+-new
+-running
+-waiting
+-ready
+-terminated
+
+Process Control Block(PCB)
+-process state
+-program counter
+-CPU register
+-CPU scheduling information
+-memory-management information
+-accounting information
+-I/O status information
+
+Process Scheduler, selects among processes for next execution on CPU.
+Maintains scheducling queues of process:
+	Job queue --> set all process in the system.
+	Ready queue --> set all process residing in main memory, ready and waiting to execute. SPARTAN!
+	Device queue --> set of processes waiting for an I/O device.
+
+Short-term scheduler, CPU scheduler.
+Long-term scheduler, job scheduler. --> controls degree of multiprogramming.
+
+Process can be described:
+I/O bound process --> spends more time to I/O. Many short CPU bursts.
+CPU bound process --> spends more time to computations. Few long CPU bursts.
+
+Independet process, cannot affect or be affected by the execution of another process.
+Cooperating process, can affect or be affected by the execution of another process.
+Advantages of process cooperation:
+	-information sharing
+	-computation speed-up
+	-modularity
+	-convenience
+
+Unbounded-buffer places no practical limit on the size of the buffer.
+Bounded-buffer assumes that there is a fixed buffer size.
+
+--------------------------------------------------------------------------------------------------------
+
+Chapter 4:
+
+THREADS
+
+Benefits:
+Responsiveness
+Resource Sharing
+Economy
+Scalability
+
+Multicore programming:
+Parallelism, implies a system can perform more than one task simultaneously.
+Concurrency, supports more than one task making progress.
+
+Types of parallelism: 
+Data parallelism – distributes subsets of the same data across multiple cores, SAME OPERATION on each.
+Task parallelism – distributing threads across cores, each thread performing UNIQUE operation.
+
+User threads, management done by user-level threads library.
+Kernel threads, supported by kernel.
+
+--------------------------------------------------------------------------------------------------------
+
+Chapter 5:
+
+SYNCHRONIZATION
+
+Critical Section Problem:
+When one process in critical section, no other may be in its critical section.
+Each process must ask permission to enter critical section in "entry section", 
+may follow critical section with "exit section", then "remainder section".
+
+Solutions:
+
+Mutual Exclusion: 
+Ensuring that only one process can execute within the critical section at any given time.
+
+Progress: 
+Ensuring that if no process is executing in the critical section and some processes wish to enter it, 
+then only those processes not in the remainder section can participate in deciding which will enter 
+the critical section next, and this decision cannot be postponed indefinitely.
+
+Bounded Waiting: Ensuring that after a process requests access to the critical section, 
+there is a limit on the number of times other processes are allowed to enter the critical section 
+before this request is granted.
+
+Deadlock: 
+Two or more processes are waiting indefinitely for an event that can be caused by 
+only one of the waiting processes.
+
+Starvation (indefinite blocking):
+A process may never be removed from the semaphore queue in which it is suspended.
+
+Priority Inversion:
+Scheduling problem when lower-priority process holds a lock needed by higher-priority process.
+
+to be continued...
