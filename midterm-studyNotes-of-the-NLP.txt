@@ -1,0 +1,106 @@
+NATURAL LANGUAGE PROCESSING
+
+----------------------------------------------------------------------------------------------------
+Midterm Question Topics and Distribution:
+1 Python
+1 One Hot Encoding*
+1 Bag of Words*
+1 TF/IDF*
+1 RegEx
+*Kodu değil, özellikleri ve nasıl çalıştığı sorulacak.
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+-One Hot Encoding:
+
+Simple and easy to implement.
+Captures word order. WORD ORDER
+
+Doesn't capture word order well enough.
+DOES NOT capture SEMANTIC RELATIONSHIP between tokens.
+Overall, inefficent for large vectors.
+
+	1 if a token is present, 0 if not. 
+	Example: Vocabulary: ['is','fun','ml'] 
+	for a sentence: "is ml fun"
+	the vector: [1,0,0], [0,0,1], [0,1,0]
+
+----------------------------------------------------------------------------------------------------
+
+-Bag of Words:
+
+Simple and efficient.
+Captures the token frequency.
+
+	The frequency of a token is used as the integer for it. Not just 1 and 0.
+	Example: Vocabulary: ['is','what','it']
+	for a sentence: "it is what it is"
+	the vector: [2,1,2] (in the order of vocabulary) here, 2!
+
+Loses word order. NOT WORD ORDER
+DOES NOT capture SEMANTIC RELATIONSHIP between tokens.
+Significance of a word depends on it's frequency which 	is not alway true.
+*In here significance =! frequency.
+
+----------------------------------------------------------------------------------------------------
+
+-TF/IDF:
+
+***The rarity of a word is used as a weight.
+TF SAME AS BOW.
+It is multiplied by how rare the token is in your entire dataset (IDF).
+Captures importance of each token.
+Word frequency is balanced with it's uniqueness.
+
+Loses word order and semantic relationships.
+Doesn't work well for small datasets.
+
+
+TF/IDF is a statistical method used to measure the importance of a word in a document relative 
+to a collection (corpus) of documents.
+
+	TF: (term frequency) measures how often a term or word occurs in a given document. 
+	
+	TF(t,d) = nunmber of ocurrences of term t in document d / total number of terms in document d
+
+	IDF: (inverse document frequency) measures the importance of the term across a corpus. 
+	*In computing TF, all terms are given equal importance (weightage). 
+
+	IDF(t) = loge x (total number of documents in the corpus / number of documents with term t in them)
+
+TF-IDF = TF X IDF.
+
+----------------------------------------------------------------------------------------------------
+!!! All the previous methods don't capture semantic relationships which is crucial for NLP !!!
+
+"The cat eats food" and "The food eats cat" mean entirely different things but 
+their vectors would be almost identical.
+
+For next word prediction on bigger tasks, we will use word embeddings.
+
+Word Embedding:
+Dense vectors which capture SEMANTIC RELATTONSHIPS.
+
+-CBOW:
+	-input  -->	projection
+	-input  -->	projection
+	-input	-->	projection	SUM -->	Output
+	-input	-->	projection	
+	-input	-->	projection
+
+-Skip-gram:
+	
+					--> Output
+					--> Output
+	input --> projection	SUM 	--> Output
+					--> Output
+					--> Output
+
+----------------------------------------------------------------------------------------------------
+
+-RegEx:
+
+What is Regex?
+Regex (or regular expressions) consists of special sequences that help you find or 
+match patterns within strings.
+
